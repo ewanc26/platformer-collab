@@ -19,3 +19,7 @@ A simple Godot platformer made by two idiots. :3
 ## Running the Game
 
 - Open the project in Godot and click the "Play" button in the top-right corner
+
+## Credits
+
+The [`assets`](./assets) folder contains assets from [Kenney](https://kenney.nl), a website that provides free assets for games.
