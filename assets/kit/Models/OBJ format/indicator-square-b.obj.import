@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dk31cnpkioe21"
+path="res://.godot/imported/indicator-square-b.obj-88cb2a46923428a6a5f465f69d20dabc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/indicator-square-b.obj-88cb2a46923428a6a5f465f69d20dabc.mesh"]
+
+source_file="res://assets/kit/Models/OBJ format/indicator-square-b.obj"
+dest_files=["res://.godot/imported/indicator-square-b.obj-88cb2a46923428a6a5f465f69d20dabc.mesh", "res://.godot/imported/indicator-square-b.obj-88cb2a46923428a6a5f465f69d20dabc.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
