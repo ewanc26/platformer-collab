@@ -14,6 +14,17 @@ config/name="Collaborative Platformer"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+
 [dotnet]
 
 project/assembly_name="Collaborative Platformer"
+
+[rendering]
+
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+anti_aliasing/quality/msaa_3d=1
