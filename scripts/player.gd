@@ -6,6 +6,11 @@ var pitch_input := 0.0
 var camera_distance := 2.5
 var camera_height := 1.0
 
+# Camera state variables
+var is_camera_coupled := false
+var last_movement_time := 0.0
+var camera_decoupling_delay := 0.5  # Time in seconds before decoupling after stopping
+
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
 @onready var camera := $TwistPivot/PitchPivot/Camera3D
@@ -15,12 +20,38 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	# Set initial camera position
 	camera.position = Vector3(0, camera_height, camera_distance)
+	# Start with decoupled camera
+	is_camera_coupled = false
 
 func _process(delta: float) -> void:
 	var input := Vector3.ZERO
 	
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_backwards")
+	
+	# Handle camera coupling based on movement
+	if input.length() > 0.1:
+		# Player is moving, reset timer and ensure camera is coupled
+		last_movement_time = Time.get_ticks_msec() / 1000.0
+		
+		if !is_camera_coupled:
+			# Player started moving, couple the camera
+			is_camera_coupled = true
+			
+			# Store current camera global transform before coupling
+			var camera_global_transform = twist_pivot.global_transform
+			
+			# Align twist pivot with model direction
+			twist_pivot.global_transform.basis = model.global_transform.basis
+			
+			# We need to preserve the camera's pitch while updating its yaw
+			var current_pitch = pitch_pivot.rotation.x
+			pitch_pivot.rotation.x = current_pitch
+	else:
+		# Player not moving, check if we should decouple
+		var current_time = Time.get_ticks_msec() / 1000.0
+		if is_camera_coupled && (current_time - last_movement_time) > camera_decoupling_delay:
+			is_camera_coupled = false
 	
 	# Calculate the movement force based on the camera's direction
 	var forward_direction = twist_pivot.basis.z.normalized()
