@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://101towk4a87"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://d1hxcshdksjtg" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://d2j06tpm3h1ow" path="res://assets/kit/animal-dog.glb" id="2_g2els"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhqgy"]
@@ -21,7 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.5)
 
 [node name="Model" parent="." instance=ExtResource("2_g2els")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
