@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://befdgg6crm5eg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q3wo1"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_uhqny"]
+sky_material = SubResource("ProceduralSkyMaterial_q3wo1")
+
+[sub_resource type="Environment" id="Environment_k5jlv"]
+background_mode = 2
+sky = SubResource("Sky_uhqny")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q3wo1"]
+size = Vector2(50, 50)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k5jlv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 30, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.744277, 0.667872, 0, -0.667872, 0.744277, 0, 20, 40)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_q3wo1")
