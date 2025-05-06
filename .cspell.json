@@ -59,6 +59,7 @@
     "Silverlight",
     "snupkg",
     "svclog",
+    "tfuxw",
     "timemachine",
     "tlog",
     "towk",
@@ -72,7 +73,9 @@
     "vssscc",
     "wpftmp",
     "wwwroot",
-    "xpress"
+    "xpress",
+    "xxan",
+    "xxbgel"
   ],
   "flagWords": [],
   "ignorePaths": [
