@@ -15,6 +15,7 @@ var camera_decoupling_delay := 0.5  # Time in seconds before decoupling after st
 @onready var pitch_pivot := $TwistPivot/PitchPivot
 @onready var camera := $TwistPivot/PitchPivot/Camera3D
 @onready var model := $Model
+@onready var grounded := $Grounded
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -60,6 +61,9 @@ func _process(delta: float) -> void:
 	# Add sideways movement perpendicular to the camera's forward direction
 	var right_direction = twist_pivot.basis.x.normalized()
 	force += right_direction * input.x * 1200.0 * delta
+	
+	if Input.is_action_just_pressed("jump") && grounded.is_colliding():
+		force += Vector3.UP * 500
 	
 	apply_central_force(force)
 	
