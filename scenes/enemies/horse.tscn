@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2m2p5kbi8rr3"]
+
+[ext_resource type="PackedScene" uid="uid://k21x4558xxan" path="res://assets/kit/animal-horse.glb" id="1_f1vcp"]
+[ext_resource type="Script" uid="uid://d1m825bgt77qq" path="res://scripts/horse/horse_enemy.gd" id="2_horse_script"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1u4mh"]
+margin = 0.0
+size = Vector3(0.3, 0.76, 1)
+
+[node name="Enemy Horse" type="RigidBody3D"]
+mass = 2.0
+script = ExtResource("2_horse_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, -0.05)
+shape = SubResource("BoxShape3D_1u4mh")
+debug_color = Color(0.871799, 0.226102, 0.664138, 0.42)
+
+[node name="Grounded" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+target_position = Vector3(0, -0.05, 0)
+
+[node name="Model" parent="." instance=ExtResource("1_f1vcp")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
