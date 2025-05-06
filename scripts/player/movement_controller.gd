@@ -9,6 +9,10 @@ var parent: RigidBody3D
 var jump_force := 500.0
 var movement_force := 1200.0
 
+# State tracking
+var is_jumping := false
+var jump_cooldown := 0.0
+
 func _init(player_parent: RigidBody3D, player_model: Node3D, player_grounded: RayCast3D) -> void:
 	parent = player_parent
 	model = player_model
@@ -27,8 +31,22 @@ func apply_movement(input: Vector3, forward_dir: Vector3, right_dir: Vector3, de
 
 # Handle jumping
 func handle_jump() -> void:
-	if Input.is_action_just_pressed("jump") && grounded.is_colliding():
+	# Decrease jump cooldown if active
+	if jump_cooldown > 0:
+		jump_cooldown -= get_process_delta_time()
+	
+	# Check if player is on ground
+	var on_ground = grounded.is_colliding()
+	
+	# Reset jumping state when landing
+	if on_ground && is_jumping && jump_cooldown <= 0:
+		is_jumping = false
+	
+	# Handle jump input
+	if Input.is_action_just_pressed("jump") && on_ground:
 		parent.apply_central_force(Vector3.UP * jump_force)
+		is_jumping = true
+		jump_cooldown = 0.2  # Short cooldown to prevent immediate state change
 
 # Rotate the model based on movement direction
 func rotate_model(input_length: float, forward_dir: Vector3) -> void:
