@@ -4,6 +4,7 @@ extends RigidBody3D
 var camera_controller
 var movement_controller
 var input_controller
+var animation_controller
 
 # Node references
 @onready var twist_pivot := $TwistPivot
@@ -24,6 +25,10 @@ func _ready() -> void:
 	# Initialize movement controller with required node references
 	movement_controller = load("res://scripts/player/movement_controller.gd").new(self, model, grounded)
 	add_child(movement_controller)
+	
+	# Initialize animation controller with required node references
+	animation_controller = load("res://scripts/player/animation_controller.gd").new(model)
+	add_child(animation_controller)
 	
 	# Set initial mouse mode
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -47,6 +52,13 @@ func _process(delta: float) -> void:
 	
 	# Rotate model based on movement
 	movement_controller.rotate_model(input.length(), forward_dir)
+	
+	# Update animation based on current state
+	animation_controller.update_animation(
+		linear_velocity,
+		grounded.is_colliding(),
+		movement_controller.is_jumping
+	)
 	
 	# Handle UI input (like ESC key)
 	input_controller.handle_ui_input()
