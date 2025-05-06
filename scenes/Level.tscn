@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://befdgg6crm5eg"]
+[gd_scene load_steps=8 format=3 uid="uid://befdgg6crm5eg"]
 
 [ext_resource type="PackedScene" uid="uid://101towk4a87" path="res://scenes/player.tscn" id="1_uhqny"]
 [ext_resource type="PackedScene" uid="uid://b4ac3ba7cbqbk" path="res://assets/kit/floor-square.glb" id="2_k5jlv"]
+[ext_resource type="PackedScene" uid="uid://k21x4558xxan" path="res://assets/kit/animal-horse.glb" id="3_6vs76"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q3wo1"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -29,7 +30,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_uhqny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3113e-05, 0.0349042, 1.22328)
 linear_damp = 3.0
 
 [node name="Ground" parent="." instance=ExtResource("2_k5jlv")]
@@ -40,3 +41,6 @@ transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_uhqny")
+
+[node name="animal-horse2" parent="." instance=ExtResource("3_6vs76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60603, 0.0825233, -8.5073)
