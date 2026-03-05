@@ -23,3 +23,7 @@ A simple Godot platformer made by two idiots. :3
 ## Credits
 
 The [`assets`](./assets) folder contains assets from [Kenney](https://kenney.nl), a website that provides free assets for games.
+
+## ☕ Support
+
+If you found this useful, consider [buying me a ko-fi](https://ko-fi.com/ewancroft)!
