@@ -2,6 +2,8 @@
 
 A simple Godot platformer made by two idiots. :3
 
+> 🧶 Also available on [Tangled](https://tangled.org/ewancroft.uk/platformer-collab)
+
 ## Setup Instructions
 
 ### macOS
